@@ -286,6 +286,8 @@ class HeartbeatRequest final :
 
   enum : int {
     kRegionStatsFieldNumber = 4,
+    kIpFieldNumber = 13,
+    kHostnameFieldNumber = 14,
     kHeaderFieldNumber = 1,
     kPeerFieldNumber = 2,
     kReportIntervalFieldNumber = 3,
@@ -315,6 +317,34 @@ class HeartbeatRequest final :
   ::greptime::v1::meta::RegionStat* add_region_stats();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::greptime::v1::meta::RegionStat >&
       region_stats() const;
+
+  // string ip = 13;
+  void clear_ip();
+  const std::string& ip() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_ip(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_ip();
+  PROTOBUF_NODISCARD std::string* release_ip();
+  void set_allocated_ip(std::string* ip);
+  private:
+  const std::string& _internal_ip() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ip(const std::string& value);
+  std::string* _internal_mutable_ip();
+  public:
+
+  // string hostname = 14;
+  void clear_hostname();
+  const std::string& hostname() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_hostname(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_hostname();
+  PROTOBUF_NODISCARD std::string* release_hostname();
+  void set_allocated_hostname(std::string* hostname);
+  private:
+  const std::string& _internal_hostname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_hostname(const std::string& value);
+  std::string* _internal_mutable_hostname();
+  public:
 
   // .greptime.v1.meta.RequestHeader header = 1;
   bool has_header() const;
@@ -513,6 +543,8 @@ class HeartbeatRequest final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::greptime::v1::meta::RegionStat > region_stats_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ip_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr hostname_;
     ::greptime::v1::meta::RequestHeader* header_;
     ::greptime::v1::meta::Peer* peer_;
     ::greptime::v1::meta::TimeInterval* report_interval_;
@@ -3732,6 +3764,106 @@ inline ::greptime::v1::meta::FlownodeWorkloads* HeartbeatRequest::mutable_flowno
   ::greptime::v1::meta::FlownodeWorkloads* _msg = _internal_mutable_flownode();
   // @@protoc_insertion_point(field_mutable:greptime.v1.meta.HeartbeatRequest.flownode)
   return _msg;
+}
+
+// string ip = 13;
+inline void HeartbeatRequest::clear_ip() {
+  _impl_.ip_.ClearToEmpty();
+}
+inline const std::string& HeartbeatRequest::ip() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.meta.HeartbeatRequest.ip)
+  return _internal_ip();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void HeartbeatRequest::set_ip(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.ip_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:greptime.v1.meta.HeartbeatRequest.ip)
+}
+inline std::string* HeartbeatRequest::mutable_ip() {
+  std::string* _s = _internal_mutable_ip();
+  // @@protoc_insertion_point(field_mutable:greptime.v1.meta.HeartbeatRequest.ip)
+  return _s;
+}
+inline const std::string& HeartbeatRequest::_internal_ip() const {
+  return _impl_.ip_.Get();
+}
+inline void HeartbeatRequest::_internal_set_ip(const std::string& value) {
+  
+  _impl_.ip_.Set(value, GetArenaForAllocation());
+}
+inline std::string* HeartbeatRequest::_internal_mutable_ip() {
+  
+  return _impl_.ip_.Mutable(GetArenaForAllocation());
+}
+inline std::string* HeartbeatRequest::release_ip() {
+  // @@protoc_insertion_point(field_release:greptime.v1.meta.HeartbeatRequest.ip)
+  return _impl_.ip_.Release();
+}
+inline void HeartbeatRequest::set_allocated_ip(std::string* ip) {
+  if (ip != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.ip_.SetAllocated(ip, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.ip_.IsDefault()) {
+    _impl_.ip_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:greptime.v1.meta.HeartbeatRequest.ip)
+}
+
+// string hostname = 14;
+inline void HeartbeatRequest::clear_hostname() {
+  _impl_.hostname_.ClearToEmpty();
+}
+inline const std::string& HeartbeatRequest::hostname() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.meta.HeartbeatRequest.hostname)
+  return _internal_hostname();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void HeartbeatRequest::set_hostname(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.hostname_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:greptime.v1.meta.HeartbeatRequest.hostname)
+}
+inline std::string* HeartbeatRequest::mutable_hostname() {
+  std::string* _s = _internal_mutable_hostname();
+  // @@protoc_insertion_point(field_mutable:greptime.v1.meta.HeartbeatRequest.hostname)
+  return _s;
+}
+inline const std::string& HeartbeatRequest::_internal_hostname() const {
+  return _impl_.hostname_.Get();
+}
+inline void HeartbeatRequest::_internal_set_hostname(const std::string& value) {
+  
+  _impl_.hostname_.Set(value, GetArenaForAllocation());
+}
+inline std::string* HeartbeatRequest::_internal_mutable_hostname() {
+  
+  return _impl_.hostname_.Mutable(GetArenaForAllocation());
+}
+inline std::string* HeartbeatRequest::release_hostname() {
+  // @@protoc_insertion_point(field_release:greptime.v1.meta.HeartbeatRequest.hostname)
+  return _impl_.hostname_.Release();
+}
+inline void HeartbeatRequest::set_allocated_hostname(std::string* hostname) {
+  if (hostname != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.hostname_.SetAllocated(hostname, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.hostname_.IsDefault()) {
+    _impl_.hostname_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:greptime.v1.meta.HeartbeatRequest.hostname)
 }
 
 inline bool HeartbeatRequest::has_node_workloads() const {

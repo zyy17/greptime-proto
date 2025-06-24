@@ -54,6 +54,11 @@ message HeartbeatRequest {
     FrontendWorkloads frontend = 11;
     FlownodeWorkloads flownode = 12;
   }
+  // The IP address of the node.
+  string ip = 13;
+
+  // The hostname of the node.
+  string hostname = 14;
 }
 
 /// The workload types of the datanode.
