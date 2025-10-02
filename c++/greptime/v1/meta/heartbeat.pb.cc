@@ -107,10 +107,10 @@ PROTOBUF_CONSTEXPR NodeInfo::NodeInfo(
   , /*decltype(_impl_.git_commit_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.hostname_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.start_time_ms_)*/uint64_t{0u}
-  , /*decltype(_impl_.max_memory_bytes_)*/uint64_t{0u}
-  , /*decltype(_impl_.max_cpu_millicores_)*/0u
-  , /*decltype(_impl_.used_cpu_millicores_)*/0u
-  , /*decltype(_impl_.used_memory_bytes_)*/uint64_t{0u}
+  , /*decltype(_impl_.max_cpu_millicores_)*/int64_t{0}
+  , /*decltype(_impl_.max_memory_bytes_)*/int64_t{0}
+  , /*decltype(_impl_.used_cpu_millicores_)*/int64_t{0}
+  , /*decltype(_impl_.used_memory_bytes_)*/int64_t{0}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct NodeInfoDefaultTypeInternal {
   PROTOBUF_CONSTEXPR NodeInfoDefaultTypeInternal()
@@ -580,9 +580,9 @@ const char descriptor_table_protodef_greptime_2fv1_2fmeta_2fheartbeat_2eproto[] 
   "\005types\030\001 \003(\005\"\"\n\021FlownodeWorkloads\022\r\n\005typ"
   "es\030\001 \003(\005\"\306\001\n\010NodeInfo\022\017\n\007version\030\001 \001(\t\022\022"
   "\n\ngit_commit\030\002 \001(\t\022\025\n\rstart_time_ms\030\003 \001("
-  "\004\022\032\n\022max_cpu_millicores\030\004 \001(\r\022\030\n\020max_mem"
-  "ory_bytes\030\005 \001(\004\022\033\n\023used_cpu_millicores\030\007"
-  " \001(\r\022\031\n\021used_memory_bytes\030\010 \001(\004\022\020\n\010hostn"
+  "\004\022\032\n\022max_cpu_millicores\030\004 \001(\003\022\030\n\020max_mem"
+  "ory_bytes\030\005 \001(\003\022\033\n\023used_cpu_millicores\030\007"
+  " \001(\003\022\031\n\021used_memory_bytes\030\010 \001(\003\022\020\n\010hostn"
   "ame\030\t \001(\t\"\207\002\n\nRegionStat\022\021\n\tregion_id\030\001 "
   "\001(\004\022\014\n\004rcus\030\002 \001(\003\022\014\n\004wcus\030\003 \001(\003\022\031\n\021appro"
   "ximate_bytes\030\004 \001(\003\022\016\n\006engine\030\006 \001(\t\022*\n\004ro"
@@ -2099,8 +2099,8 @@ NodeInfo::NodeInfo(const NodeInfo& from)
     , decltype(_impl_.git_commit_){}
     , decltype(_impl_.hostname_){}
     , decltype(_impl_.start_time_ms_){}
-    , decltype(_impl_.max_memory_bytes_){}
     , decltype(_impl_.max_cpu_millicores_){}
+    , decltype(_impl_.max_memory_bytes_){}
     , decltype(_impl_.used_cpu_millicores_){}
     , decltype(_impl_.used_memory_bytes_){}
     , /*decltype(_impl_._cached_size_)*/{}};
@@ -2145,10 +2145,10 @@ inline void NodeInfo::SharedCtor(
     , decltype(_impl_.git_commit_){}
     , decltype(_impl_.hostname_){}
     , decltype(_impl_.start_time_ms_){uint64_t{0u}}
-    , decltype(_impl_.max_memory_bytes_){uint64_t{0u}}
-    , decltype(_impl_.max_cpu_millicores_){0u}
-    , decltype(_impl_.used_cpu_millicores_){0u}
-    , decltype(_impl_.used_memory_bytes_){uint64_t{0u}}
+    , decltype(_impl_.max_cpu_millicores_){int64_t{0}}
+    , decltype(_impl_.max_memory_bytes_){int64_t{0}}
+    , decltype(_impl_.used_cpu_millicores_){int64_t{0}}
+    , decltype(_impl_.used_memory_bytes_){int64_t{0}}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.version_.InitDefault();
@@ -2234,15 +2234,15 @@ const char* NodeInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
         } else
           goto handle_unusual;
         continue;
-      // uint32 max_cpu_millicores = 4;
+      // int64 max_cpu_millicores = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _impl_.max_cpu_millicores_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.max_cpu_millicores_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint64 max_memory_bytes = 5;
+      // int64 max_memory_bytes = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
           _impl_.max_memory_bytes_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
@@ -2250,15 +2250,15 @@ const char* NodeInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
         } else
           goto handle_unusual;
         continue;
-      // uint32 used_cpu_millicores = 7;
+      // int64 used_cpu_millicores = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
-          _impl_.used_cpu_millicores_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.used_cpu_millicores_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint64 used_memory_bytes = 8;
+      // int64 used_memory_bytes = 8;
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
           _impl_.used_memory_bytes_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
@@ -2331,28 +2331,28 @@ uint8_t* NodeInfo::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt64ToArray(3, this->_internal_start_time_ms(), target);
   }
 
-  // uint32 max_cpu_millicores = 4;
+  // int64 max_cpu_millicores = 4;
   if (this->_internal_max_cpu_millicores() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_max_cpu_millicores(), target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(4, this->_internal_max_cpu_millicores(), target);
   }
 
-  // uint64 max_memory_bytes = 5;
+  // int64 max_memory_bytes = 5;
   if (this->_internal_max_memory_bytes() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(5, this->_internal_max_memory_bytes(), target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(5, this->_internal_max_memory_bytes(), target);
   }
 
-  // uint32 used_cpu_millicores = 7;
+  // int64 used_cpu_millicores = 7;
   if (this->_internal_used_cpu_millicores() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_used_cpu_millicores(), target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(7, this->_internal_used_cpu_millicores(), target);
   }
 
-  // uint64 used_memory_bytes = 8;
+  // int64 used_memory_bytes = 8;
   if (this->_internal_used_memory_bytes() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(8, this->_internal_used_memory_bytes(), target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(8, this->_internal_used_memory_bytes(), target);
   }
 
   // string hostname = 9;
@@ -2407,24 +2407,24 @@ size_t NodeInfo::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_start_time_ms());
   }
 
-  // uint64 max_memory_bytes = 5;
-  if (this->_internal_max_memory_bytes() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_max_memory_bytes());
-  }
-
-  // uint32 max_cpu_millicores = 4;
+  // int64 max_cpu_millicores = 4;
   if (this->_internal_max_cpu_millicores() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_max_cpu_millicores());
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_max_cpu_millicores());
   }
 
-  // uint32 used_cpu_millicores = 7;
+  // int64 max_memory_bytes = 5;
+  if (this->_internal_max_memory_bytes() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_max_memory_bytes());
+  }
+
+  // int64 used_cpu_millicores = 7;
   if (this->_internal_used_cpu_millicores() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_used_cpu_millicores());
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_used_cpu_millicores());
   }
 
-  // uint64 used_memory_bytes = 8;
+  // int64 used_memory_bytes = 8;
   if (this->_internal_used_memory_bytes() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_used_memory_bytes());
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_used_memory_bytes());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -2457,11 +2457,11 @@ void NodeInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTO
   if (from._internal_start_time_ms() != 0) {
     _this->_internal_set_start_time_ms(from._internal_start_time_ms());
   }
-  if (from._internal_max_memory_bytes() != 0) {
-    _this->_internal_set_max_memory_bytes(from._internal_max_memory_bytes());
-  }
   if (from._internal_max_cpu_millicores() != 0) {
     _this->_internal_set_max_cpu_millicores(from._internal_max_cpu_millicores());
+  }
+  if (from._internal_max_memory_bytes() != 0) {
+    _this->_internal_set_max_memory_bytes(from._internal_max_memory_bytes());
   }
   if (from._internal_used_cpu_millicores() != 0) {
     _this->_internal_set_used_cpu_millicores(from._internal_used_cpu_millicores());

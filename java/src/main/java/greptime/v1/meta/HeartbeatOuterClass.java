@@ -6149,17 +6149,17 @@ com.google.protobuf.ByteString defaultValue);
      * The maximum CPU millicores of the node.
      * </pre>
      *
-     * <code>uint32 max_cpu_millicores = 4;</code>
+     * <code>int64 max_cpu_millicores = 4;</code>
      * @return The maxCpuMillicores.
      */
-    int getMaxCpuMillicores();
+    long getMaxCpuMillicores();
 
     /**
      * <pre>
      * The maximum memory bytes of the node.
      * </pre>
      *
-     * <code>uint64 max_memory_bytes = 5;</code>
+     * <code>int64 max_memory_bytes = 5;</code>
      * @return The maxMemoryBytes.
      */
     long getMaxMemoryBytes();
@@ -6169,17 +6169,17 @@ com.google.protobuf.ByteString defaultValue);
      * The used CPU millicores of the node.
      * </pre>
      *
-     * <code>uint32 used_cpu_millicores = 7;</code>
+     * <code>int64 used_cpu_millicores = 7;</code>
      * @return The usedCpuMillicores.
      */
-    int getUsedCpuMillicores();
+    long getUsedCpuMillicores();
 
     /**
      * <pre>
      * The used memory bytes of the node.
      * </pre>
      *
-     * <code>uint64 used_memory_bytes = 8;</code>
+     * <code>int64 used_memory_bytes = 8;</code>
      * @return The usedMemoryBytes.
      */
     long getUsedMemoryBytes();
@@ -6271,22 +6271,22 @@ com.google.protobuf.ByteString defaultValue);
             }
             case 32: {
 
-              maxCpuMillicores_ = input.readUInt32();
+              maxCpuMillicores_ = input.readInt64();
               break;
             }
             case 40: {
 
-              maxMemoryBytes_ = input.readUInt64();
+              maxMemoryBytes_ = input.readInt64();
               break;
             }
             case 56: {
 
-              usedCpuMillicores_ = input.readUInt32();
+              usedCpuMillicores_ = input.readInt64();
               break;
             }
             case 64: {
 
-              usedMemoryBytes_ = input.readUInt64();
+              usedMemoryBytes_ = input.readInt64();
               break;
             }
             case 74: {
@@ -6437,17 +6437,17 @@ com.google.protobuf.ByteString defaultValue);
     }
 
     public static final int MAX_CPU_MILLICORES_FIELD_NUMBER = 4;
-    private int maxCpuMillicores_;
+    private long maxCpuMillicores_;
     /**
      * <pre>
      * The maximum CPU millicores of the node.
      * </pre>
      *
-     * <code>uint32 max_cpu_millicores = 4;</code>
+     * <code>int64 max_cpu_millicores = 4;</code>
      * @return The maxCpuMillicores.
      */
     @java.lang.Override
-    public int getMaxCpuMillicores() {
+    public long getMaxCpuMillicores() {
       return maxCpuMillicores_;
     }
 
@@ -6458,7 +6458,7 @@ com.google.protobuf.ByteString defaultValue);
      * The maximum memory bytes of the node.
      * </pre>
      *
-     * <code>uint64 max_memory_bytes = 5;</code>
+     * <code>int64 max_memory_bytes = 5;</code>
      * @return The maxMemoryBytes.
      */
     @java.lang.Override
@@ -6467,17 +6467,17 @@ com.google.protobuf.ByteString defaultValue);
     }
 
     public static final int USED_CPU_MILLICORES_FIELD_NUMBER = 7;
-    private int usedCpuMillicores_;
+    private long usedCpuMillicores_;
     /**
      * <pre>
      * The used CPU millicores of the node.
      * </pre>
      *
-     * <code>uint32 used_cpu_millicores = 7;</code>
+     * <code>int64 used_cpu_millicores = 7;</code>
      * @return The usedCpuMillicores.
      */
     @java.lang.Override
-    public int getUsedCpuMillicores() {
+    public long getUsedCpuMillicores() {
       return usedCpuMillicores_;
     }
 
@@ -6488,7 +6488,7 @@ com.google.protobuf.ByteString defaultValue);
      * The used memory bytes of the node.
      * </pre>
      *
-     * <code>uint64 used_memory_bytes = 8;</code>
+     * <code>int64 used_memory_bytes = 8;</code>
      * @return The usedMemoryBytes.
      */
     @java.lang.Override
@@ -6565,17 +6565,17 @@ com.google.protobuf.ByteString defaultValue);
       if (startTimeMs_ != 0L) {
         output.writeUInt64(3, startTimeMs_);
       }
-      if (maxCpuMillicores_ != 0) {
-        output.writeUInt32(4, maxCpuMillicores_);
+      if (maxCpuMillicores_ != 0L) {
+        output.writeInt64(4, maxCpuMillicores_);
       }
       if (maxMemoryBytes_ != 0L) {
-        output.writeUInt64(5, maxMemoryBytes_);
+        output.writeInt64(5, maxMemoryBytes_);
       }
-      if (usedCpuMillicores_ != 0) {
-        output.writeUInt32(7, usedCpuMillicores_);
+      if (usedCpuMillicores_ != 0L) {
+        output.writeInt64(7, usedCpuMillicores_);
       }
       if (usedMemoryBytes_ != 0L) {
-        output.writeUInt64(8, usedMemoryBytes_);
+        output.writeInt64(8, usedMemoryBytes_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(hostname_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 9, hostname_);
@@ -6599,21 +6599,21 @@ com.google.protobuf.ByteString defaultValue);
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(3, startTimeMs_);
       }
-      if (maxCpuMillicores_ != 0) {
+      if (maxCpuMillicores_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, maxCpuMillicores_);
+          .computeInt64Size(4, maxCpuMillicores_);
       }
       if (maxMemoryBytes_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(5, maxMemoryBytes_);
+          .computeInt64Size(5, maxMemoryBytes_);
       }
-      if (usedCpuMillicores_ != 0) {
+      if (usedCpuMillicores_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(7, usedCpuMillicores_);
+          .computeInt64Size(7, usedCpuMillicores_);
       }
       if (usedMemoryBytes_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(8, usedMemoryBytes_);
+          .computeInt64Size(8, usedMemoryBytes_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(hostname_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, hostname_);
@@ -6668,12 +6668,14 @@ com.google.protobuf.ByteString defaultValue);
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getStartTimeMs());
       hash = (37 * hash) + MAX_CPU_MILLICORES_FIELD_NUMBER;
-      hash = (53 * hash) + getMaxCpuMillicores();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxCpuMillicores());
       hash = (37 * hash) + MAX_MEMORY_BYTES_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getMaxMemoryBytes());
       hash = (37 * hash) + USED_CPU_MILLICORES_FIELD_NUMBER;
-      hash = (53 * hash) + getUsedCpuMillicores();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUsedCpuMillicores());
       hash = (37 * hash) + USED_MEMORY_BYTES_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getUsedMemoryBytes());
@@ -6818,11 +6820,11 @@ com.google.protobuf.ByteString defaultValue);
 
         startTimeMs_ = 0L;
 
-        maxCpuMillicores_ = 0;
+        maxCpuMillicores_ = 0L;
 
         maxMemoryBytes_ = 0L;
 
-        usedCpuMillicores_ = 0;
+        usedCpuMillicores_ = 0L;
 
         usedMemoryBytes_ = 0L;
 
@@ -6921,13 +6923,13 @@ com.google.protobuf.ByteString defaultValue);
         if (other.getStartTimeMs() != 0L) {
           setStartTimeMs(other.getStartTimeMs());
         }
-        if (other.getMaxCpuMillicores() != 0) {
+        if (other.getMaxCpuMillicores() != 0L) {
           setMaxCpuMillicores(other.getMaxCpuMillicores());
         }
         if (other.getMaxMemoryBytes() != 0L) {
           setMaxMemoryBytes(other.getMaxMemoryBytes());
         }
-        if (other.getUsedCpuMillicores() != 0) {
+        if (other.getUsedCpuMillicores() != 0L) {
           setUsedCpuMillicores(other.getUsedCpuMillicores());
         }
         if (other.getUsedMemoryBytes() != 0L) {
@@ -7201,17 +7203,17 @@ com.google.protobuf.ByteString defaultValue);
         return this;
       }
 
-      private int maxCpuMillicores_ ;
+      private long maxCpuMillicores_ ;
       /**
        * <pre>
        * The maximum CPU millicores of the node.
        * </pre>
        *
-       * <code>uint32 max_cpu_millicores = 4;</code>
+       * <code>int64 max_cpu_millicores = 4;</code>
        * @return The maxCpuMillicores.
        */
       @java.lang.Override
-      public int getMaxCpuMillicores() {
+      public long getMaxCpuMillicores() {
         return maxCpuMillicores_;
       }
       /**
@@ -7219,11 +7221,11 @@ com.google.protobuf.ByteString defaultValue);
        * The maximum CPU millicores of the node.
        * </pre>
        *
-       * <code>uint32 max_cpu_millicores = 4;</code>
+       * <code>int64 max_cpu_millicores = 4;</code>
        * @param value The maxCpuMillicores to set.
        * @return This builder for chaining.
        */
-      public Builder setMaxCpuMillicores(int value) {
+      public Builder setMaxCpuMillicores(long value) {
         
         maxCpuMillicores_ = value;
         onChanged();
@@ -7234,12 +7236,12 @@ com.google.protobuf.ByteString defaultValue);
        * The maximum CPU millicores of the node.
        * </pre>
        *
-       * <code>uint32 max_cpu_millicores = 4;</code>
+       * <code>int64 max_cpu_millicores = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearMaxCpuMillicores() {
         
-        maxCpuMillicores_ = 0;
+        maxCpuMillicores_ = 0L;
         onChanged();
         return this;
       }
@@ -7250,7 +7252,7 @@ com.google.protobuf.ByteString defaultValue);
        * The maximum memory bytes of the node.
        * </pre>
        *
-       * <code>uint64 max_memory_bytes = 5;</code>
+       * <code>int64 max_memory_bytes = 5;</code>
        * @return The maxMemoryBytes.
        */
       @java.lang.Override
@@ -7262,7 +7264,7 @@ com.google.protobuf.ByteString defaultValue);
        * The maximum memory bytes of the node.
        * </pre>
        *
-       * <code>uint64 max_memory_bytes = 5;</code>
+       * <code>int64 max_memory_bytes = 5;</code>
        * @param value The maxMemoryBytes to set.
        * @return This builder for chaining.
        */
@@ -7277,7 +7279,7 @@ com.google.protobuf.ByteString defaultValue);
        * The maximum memory bytes of the node.
        * </pre>
        *
-       * <code>uint64 max_memory_bytes = 5;</code>
+       * <code>int64 max_memory_bytes = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearMaxMemoryBytes() {
@@ -7287,17 +7289,17 @@ com.google.protobuf.ByteString defaultValue);
         return this;
       }
 
-      private int usedCpuMillicores_ ;
+      private long usedCpuMillicores_ ;
       /**
        * <pre>
        * The used CPU millicores of the node.
        * </pre>
        *
-       * <code>uint32 used_cpu_millicores = 7;</code>
+       * <code>int64 used_cpu_millicores = 7;</code>
        * @return The usedCpuMillicores.
        */
       @java.lang.Override
-      public int getUsedCpuMillicores() {
+      public long getUsedCpuMillicores() {
         return usedCpuMillicores_;
       }
       /**
@@ -7305,11 +7307,11 @@ com.google.protobuf.ByteString defaultValue);
        * The used CPU millicores of the node.
        * </pre>
        *
-       * <code>uint32 used_cpu_millicores = 7;</code>
+       * <code>int64 used_cpu_millicores = 7;</code>
        * @param value The usedCpuMillicores to set.
        * @return This builder for chaining.
        */
-      public Builder setUsedCpuMillicores(int value) {
+      public Builder setUsedCpuMillicores(long value) {
         
         usedCpuMillicores_ = value;
         onChanged();
@@ -7320,12 +7322,12 @@ com.google.protobuf.ByteString defaultValue);
        * The used CPU millicores of the node.
        * </pre>
        *
-       * <code>uint32 used_cpu_millicores = 7;</code>
+       * <code>int64 used_cpu_millicores = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearUsedCpuMillicores() {
         
-        usedCpuMillicores_ = 0;
+        usedCpuMillicores_ = 0L;
         onChanged();
         return this;
       }
@@ -7336,7 +7338,7 @@ com.google.protobuf.ByteString defaultValue);
        * The used memory bytes of the node.
        * </pre>
        *
-       * <code>uint64 used_memory_bytes = 8;</code>
+       * <code>int64 used_memory_bytes = 8;</code>
        * @return The usedMemoryBytes.
        */
       @java.lang.Override
@@ -7348,7 +7350,7 @@ com.google.protobuf.ByteString defaultValue);
        * The used memory bytes of the node.
        * </pre>
        *
-       * <code>uint64 used_memory_bytes = 8;</code>
+       * <code>int64 used_memory_bytes = 8;</code>
        * @param value The usedMemoryBytes to set.
        * @return This builder for chaining.
        */
@@ -7363,7 +7365,7 @@ com.google.protobuf.ByteString defaultValue);
        * The used memory bytes of the node.
        * </pre>
        *
-       * <code>uint64 used_memory_bytes = 8;</code>
+       * <code>int64 used_memory_bytes = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearUsedMemoryBytes() {
@@ -16978,9 +16980,9 @@ com.google.protobuf.ByteString defaultValue);
       "\005types\030\001 \003(\005\"\"\n\021FlownodeWorkloads\022\r\n\005typ" +
       "es\030\001 \003(\005\"\306\001\n\010NodeInfo\022\017\n\007version\030\001 \001(\t\022\022" +
       "\n\ngit_commit\030\002 \001(\t\022\025\n\rstart_time_ms\030\003 \001(" +
-      "\004\022\032\n\022max_cpu_millicores\030\004 \001(\r\022\030\n\020max_mem" +
-      "ory_bytes\030\005 \001(\004\022\033\n\023used_cpu_millicores\030\007" +
-      " \001(\r\022\031\n\021used_memory_bytes\030\010 \001(\004\022\020\n\010hostn" +
+      "\004\022\032\n\022max_cpu_millicores\030\004 \001(\003\022\030\n\020max_mem" +
+      "ory_bytes\030\005 \001(\003\022\033\n\023used_cpu_millicores\030\007" +
+      " \001(\003\022\031\n\021used_memory_bytes\030\010 \001(\003\022\020\n\010hostn" +
       "ame\030\t \001(\t\"\207\002\n\nRegionStat\022\021\n\tregion_id\030\001 " +
       "\001(\004\022\014\n\004rcus\030\002 \001(\003\022\014\n\004wcus\030\003 \001(\003\022\031\n\021appro" +
       "ximate_bytes\030\004 \001(\003\022\016\n\006engine\030\006 \001(\t\022*\n\004ro" +
