@@ -1226,9 +1226,12 @@ class NodeInfo final :
   enum : int {
     kVersionFieldNumber = 1,
     kGitCommitFieldNumber = 2,
+    kHostnameFieldNumber = 9,
     kStartTimeMsFieldNumber = 3,
-    kMemoryBytesFieldNumber = 5,
-    kCpusFieldNumber = 4,
+    kMaxMemoryBytesFieldNumber = 5,
+    kMaxCpuMillicoresFieldNumber = 4,
+    kUsedCpuMillicoresFieldNumber = 7,
+    kUsedMemoryBytesFieldNumber = 8,
   };
   // string version = 1;
   void clear_version();
@@ -1258,6 +1261,20 @@ class NodeInfo final :
   std::string* _internal_mutable_git_commit();
   public:
 
+  // string hostname = 9;
+  void clear_hostname();
+  const std::string& hostname() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_hostname(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_hostname();
+  PROTOBUF_NODISCARD std::string* release_hostname();
+  void set_allocated_hostname(std::string* hostname);
+  private:
+  const std::string& _internal_hostname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_hostname(const std::string& value);
+  std::string* _internal_mutable_hostname();
+  public:
+
   // uint64 start_time_ms = 3;
   void clear_start_time_ms();
   uint64_t start_time_ms() const;
@@ -1267,22 +1284,40 @@ class NodeInfo final :
   void _internal_set_start_time_ms(uint64_t value);
   public:
 
-  // uint64 memory_bytes = 5;
-  void clear_memory_bytes();
-  uint64_t memory_bytes() const;
-  void set_memory_bytes(uint64_t value);
+  // uint64 max_memory_bytes = 5;
+  void clear_max_memory_bytes();
+  uint64_t max_memory_bytes() const;
+  void set_max_memory_bytes(uint64_t value);
   private:
-  uint64_t _internal_memory_bytes() const;
-  void _internal_set_memory_bytes(uint64_t value);
+  uint64_t _internal_max_memory_bytes() const;
+  void _internal_set_max_memory_bytes(uint64_t value);
   public:
 
-  // uint32 cpus = 4;
-  void clear_cpus();
-  uint32_t cpus() const;
-  void set_cpus(uint32_t value);
+  // uint32 max_cpu_millicores = 4;
+  void clear_max_cpu_millicores();
+  uint32_t max_cpu_millicores() const;
+  void set_max_cpu_millicores(uint32_t value);
   private:
-  uint32_t _internal_cpus() const;
-  void _internal_set_cpus(uint32_t value);
+  uint32_t _internal_max_cpu_millicores() const;
+  void _internal_set_max_cpu_millicores(uint32_t value);
+  public:
+
+  // uint32 used_cpu_millicores = 7;
+  void clear_used_cpu_millicores();
+  uint32_t used_cpu_millicores() const;
+  void set_used_cpu_millicores(uint32_t value);
+  private:
+  uint32_t _internal_used_cpu_millicores() const;
+  void _internal_set_used_cpu_millicores(uint32_t value);
+  public:
+
+  // uint64 used_memory_bytes = 8;
+  void clear_used_memory_bytes();
+  uint64_t used_memory_bytes() const;
+  void set_used_memory_bytes(uint64_t value);
+  private:
+  uint64_t _internal_used_memory_bytes() const;
+  void _internal_set_used_memory_bytes(uint64_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:greptime.v1.meta.NodeInfo)
@@ -1295,9 +1330,12 @@ class NodeInfo final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr version_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr git_commit_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr hostname_;
     uint64_t start_time_ms_;
-    uint64_t memory_bytes_;
-    uint32_t cpus_;
+    uint64_t max_memory_bytes_;
+    uint32_t max_cpu_millicores_;
+    uint32_t used_cpu_millicores_;
+    uint64_t used_memory_bytes_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -4368,44 +4406,134 @@ inline void NodeInfo::set_start_time_ms(uint64_t value) {
   // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.start_time_ms)
 }
 
-// uint32 cpus = 4;
-inline void NodeInfo::clear_cpus() {
-  _impl_.cpus_ = 0u;
+// uint32 max_cpu_millicores = 4;
+inline void NodeInfo::clear_max_cpu_millicores() {
+  _impl_.max_cpu_millicores_ = 0u;
 }
-inline uint32_t NodeInfo::_internal_cpus() const {
-  return _impl_.cpus_;
+inline uint32_t NodeInfo::_internal_max_cpu_millicores() const {
+  return _impl_.max_cpu_millicores_;
 }
-inline uint32_t NodeInfo::cpus() const {
-  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.cpus)
-  return _internal_cpus();
+inline uint32_t NodeInfo::max_cpu_millicores() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.max_cpu_millicores)
+  return _internal_max_cpu_millicores();
 }
-inline void NodeInfo::_internal_set_cpus(uint32_t value) {
+inline void NodeInfo::_internal_set_max_cpu_millicores(uint32_t value) {
   
-  _impl_.cpus_ = value;
+  _impl_.max_cpu_millicores_ = value;
 }
-inline void NodeInfo::set_cpus(uint32_t value) {
-  _internal_set_cpus(value);
-  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.cpus)
+inline void NodeInfo::set_max_cpu_millicores(uint32_t value) {
+  _internal_set_max_cpu_millicores(value);
+  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.max_cpu_millicores)
 }
 
-// uint64 memory_bytes = 5;
-inline void NodeInfo::clear_memory_bytes() {
-  _impl_.memory_bytes_ = uint64_t{0u};
+// uint64 max_memory_bytes = 5;
+inline void NodeInfo::clear_max_memory_bytes() {
+  _impl_.max_memory_bytes_ = uint64_t{0u};
 }
-inline uint64_t NodeInfo::_internal_memory_bytes() const {
-  return _impl_.memory_bytes_;
+inline uint64_t NodeInfo::_internal_max_memory_bytes() const {
+  return _impl_.max_memory_bytes_;
 }
-inline uint64_t NodeInfo::memory_bytes() const {
-  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.memory_bytes)
-  return _internal_memory_bytes();
+inline uint64_t NodeInfo::max_memory_bytes() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.max_memory_bytes)
+  return _internal_max_memory_bytes();
 }
-inline void NodeInfo::_internal_set_memory_bytes(uint64_t value) {
+inline void NodeInfo::_internal_set_max_memory_bytes(uint64_t value) {
   
-  _impl_.memory_bytes_ = value;
+  _impl_.max_memory_bytes_ = value;
 }
-inline void NodeInfo::set_memory_bytes(uint64_t value) {
-  _internal_set_memory_bytes(value);
-  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.memory_bytes)
+inline void NodeInfo::set_max_memory_bytes(uint64_t value) {
+  _internal_set_max_memory_bytes(value);
+  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.max_memory_bytes)
+}
+
+// uint32 used_cpu_millicores = 7;
+inline void NodeInfo::clear_used_cpu_millicores() {
+  _impl_.used_cpu_millicores_ = 0u;
+}
+inline uint32_t NodeInfo::_internal_used_cpu_millicores() const {
+  return _impl_.used_cpu_millicores_;
+}
+inline uint32_t NodeInfo::used_cpu_millicores() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.used_cpu_millicores)
+  return _internal_used_cpu_millicores();
+}
+inline void NodeInfo::_internal_set_used_cpu_millicores(uint32_t value) {
+  
+  _impl_.used_cpu_millicores_ = value;
+}
+inline void NodeInfo::set_used_cpu_millicores(uint32_t value) {
+  _internal_set_used_cpu_millicores(value);
+  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.used_cpu_millicores)
+}
+
+// uint64 used_memory_bytes = 8;
+inline void NodeInfo::clear_used_memory_bytes() {
+  _impl_.used_memory_bytes_ = uint64_t{0u};
+}
+inline uint64_t NodeInfo::_internal_used_memory_bytes() const {
+  return _impl_.used_memory_bytes_;
+}
+inline uint64_t NodeInfo::used_memory_bytes() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.used_memory_bytes)
+  return _internal_used_memory_bytes();
+}
+inline void NodeInfo::_internal_set_used_memory_bytes(uint64_t value) {
+  
+  _impl_.used_memory_bytes_ = value;
+}
+inline void NodeInfo::set_used_memory_bytes(uint64_t value) {
+  _internal_set_used_memory_bytes(value);
+  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.used_memory_bytes)
+}
+
+// string hostname = 9;
+inline void NodeInfo::clear_hostname() {
+  _impl_.hostname_.ClearToEmpty();
+}
+inline const std::string& NodeInfo::hostname() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.hostname)
+  return _internal_hostname();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void NodeInfo::set_hostname(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.hostname_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.hostname)
+}
+inline std::string* NodeInfo::mutable_hostname() {
+  std::string* _s = _internal_mutable_hostname();
+  // @@protoc_insertion_point(field_mutable:greptime.v1.meta.NodeInfo.hostname)
+  return _s;
+}
+inline const std::string& NodeInfo::_internal_hostname() const {
+  return _impl_.hostname_.Get();
+}
+inline void NodeInfo::_internal_set_hostname(const std::string& value) {
+  
+  _impl_.hostname_.Set(value, GetArenaForAllocation());
+}
+inline std::string* NodeInfo::_internal_mutable_hostname() {
+  
+  return _impl_.hostname_.Mutable(GetArenaForAllocation());
+}
+inline std::string* NodeInfo::release_hostname() {
+  // @@protoc_insertion_point(field_release:greptime.v1.meta.NodeInfo.hostname)
+  return _impl_.hostname_.Release();
+}
+inline void NodeInfo::set_allocated_hostname(std::string* hostname) {
+  if (hostname != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.hostname_.SetAllocated(hostname, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.hostname_.IsDefault()) {
+    _impl_.hostname_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:greptime.v1.meta.NodeInfo.hostname)
 }
 
 // -------------------------------------------------------------------

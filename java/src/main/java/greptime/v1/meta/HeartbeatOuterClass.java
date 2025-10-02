@@ -6146,23 +6146,63 @@ com.google.protobuf.ByteString defaultValue);
 
     /**
      * <pre>
-     * The CPU cores number of the node.
+     * The maximum CPU millicores of the node.
      * </pre>
      *
-     * <code>uint32 cpus = 4;</code>
-     * @return The cpus.
+     * <code>uint32 max_cpu_millicores = 4;</code>
+     * @return The maxCpuMillicores.
      */
-    int getCpus();
+    int getMaxCpuMillicores();
 
     /**
      * <pre>
-     * The memory bytes of the node.
+     * The maximum memory bytes of the node.
      * </pre>
      *
-     * <code>uint64 memory_bytes = 5;</code>
-     * @return The memoryBytes.
+     * <code>uint64 max_memory_bytes = 5;</code>
+     * @return The maxMemoryBytes.
      */
-    long getMemoryBytes();
+    long getMaxMemoryBytes();
+
+    /**
+     * <pre>
+     * The used CPU millicores of the node.
+     * </pre>
+     *
+     * <code>uint32 used_cpu_millicores = 7;</code>
+     * @return The usedCpuMillicores.
+     */
+    int getUsedCpuMillicores();
+
+    /**
+     * <pre>
+     * The used memory bytes of the node.
+     * </pre>
+     *
+     * <code>uint64 used_memory_bytes = 8;</code>
+     * @return The usedMemoryBytes.
+     */
+    long getUsedMemoryBytes();
+
+    /**
+     * <pre>
+     * The hostname of the node.
+     * </pre>
+     *
+     * <code>string hostname = 9;</code>
+     * @return The hostname.
+     */
+    java.lang.String getHostname();
+    /**
+     * <pre>
+     * The hostname of the node.
+     * </pre>
+     *
+     * <code>string hostname = 9;</code>
+     * @return The bytes for hostname.
+     */
+    com.google.protobuf.ByteString
+        getHostnameBytes();
   }
   /**
    * Protobuf type {@code greptime.v1.meta.NodeInfo}
@@ -6179,6 +6219,7 @@ com.google.protobuf.ByteString defaultValue);
     private NodeInfo() {
       version_ = "";
       gitCommit_ = "";
+      hostname_ = "";
     }
 
     @java.lang.Override
@@ -6230,12 +6271,28 @@ com.google.protobuf.ByteString defaultValue);
             }
             case 32: {
 
-              cpus_ = input.readUInt32();
+              maxCpuMillicores_ = input.readUInt32();
               break;
             }
             case 40: {
 
-              memoryBytes_ = input.readUInt64();
+              maxMemoryBytes_ = input.readUInt64();
+              break;
+            }
+            case 56: {
+
+              usedCpuMillicores_ = input.readUInt32();
+              break;
+            }
+            case 64: {
+
+              usedMemoryBytes_ = input.readUInt64();
+              break;
+            }
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              hostname_ = s;
               break;
             }
             default: {
@@ -6379,34 +6436,110 @@ com.google.protobuf.ByteString defaultValue);
       return startTimeMs_;
     }
 
-    public static final int CPUS_FIELD_NUMBER = 4;
-    private int cpus_;
+    public static final int MAX_CPU_MILLICORES_FIELD_NUMBER = 4;
+    private int maxCpuMillicores_;
     /**
      * <pre>
-     * The CPU cores number of the node.
+     * The maximum CPU millicores of the node.
      * </pre>
      *
-     * <code>uint32 cpus = 4;</code>
-     * @return The cpus.
+     * <code>uint32 max_cpu_millicores = 4;</code>
+     * @return The maxCpuMillicores.
      */
     @java.lang.Override
-    public int getCpus() {
-      return cpus_;
+    public int getMaxCpuMillicores() {
+      return maxCpuMillicores_;
     }
 
-    public static final int MEMORY_BYTES_FIELD_NUMBER = 5;
-    private long memoryBytes_;
+    public static final int MAX_MEMORY_BYTES_FIELD_NUMBER = 5;
+    private long maxMemoryBytes_;
     /**
      * <pre>
-     * The memory bytes of the node.
+     * The maximum memory bytes of the node.
      * </pre>
      *
-     * <code>uint64 memory_bytes = 5;</code>
-     * @return The memoryBytes.
+     * <code>uint64 max_memory_bytes = 5;</code>
+     * @return The maxMemoryBytes.
      */
     @java.lang.Override
-    public long getMemoryBytes() {
-      return memoryBytes_;
+    public long getMaxMemoryBytes() {
+      return maxMemoryBytes_;
+    }
+
+    public static final int USED_CPU_MILLICORES_FIELD_NUMBER = 7;
+    private int usedCpuMillicores_;
+    /**
+     * <pre>
+     * The used CPU millicores of the node.
+     * </pre>
+     *
+     * <code>uint32 used_cpu_millicores = 7;</code>
+     * @return The usedCpuMillicores.
+     */
+    @java.lang.Override
+    public int getUsedCpuMillicores() {
+      return usedCpuMillicores_;
+    }
+
+    public static final int USED_MEMORY_BYTES_FIELD_NUMBER = 8;
+    private long usedMemoryBytes_;
+    /**
+     * <pre>
+     * The used memory bytes of the node.
+     * </pre>
+     *
+     * <code>uint64 used_memory_bytes = 8;</code>
+     * @return The usedMemoryBytes.
+     */
+    @java.lang.Override
+    public long getUsedMemoryBytes() {
+      return usedMemoryBytes_;
+    }
+
+    public static final int HOSTNAME_FIELD_NUMBER = 9;
+    private volatile java.lang.Object hostname_;
+    /**
+     * <pre>
+     * The hostname of the node.
+     * </pre>
+     *
+     * <code>string hostname = 9;</code>
+     * @return The hostname.
+     */
+    @java.lang.Override
+    public java.lang.String getHostname() {
+      java.lang.Object ref = hostname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        hostname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The hostname of the node.
+     * </pre>
+     *
+     * <code>string hostname = 9;</code>
+     * @return The bytes for hostname.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getHostnameBytes() {
+      java.lang.Object ref = hostname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        hostname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6432,11 +6565,20 @@ com.google.protobuf.ByteString defaultValue);
       if (startTimeMs_ != 0L) {
         output.writeUInt64(3, startTimeMs_);
       }
-      if (cpus_ != 0) {
-        output.writeUInt32(4, cpus_);
+      if (maxCpuMillicores_ != 0) {
+        output.writeUInt32(4, maxCpuMillicores_);
       }
-      if (memoryBytes_ != 0L) {
-        output.writeUInt64(5, memoryBytes_);
+      if (maxMemoryBytes_ != 0L) {
+        output.writeUInt64(5, maxMemoryBytes_);
+      }
+      if (usedCpuMillicores_ != 0) {
+        output.writeUInt32(7, usedCpuMillicores_);
+      }
+      if (usedMemoryBytes_ != 0L) {
+        output.writeUInt64(8, usedMemoryBytes_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(hostname_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, hostname_);
       }
       unknownFields.writeTo(output);
     }
@@ -6457,13 +6599,24 @@ com.google.protobuf.ByteString defaultValue);
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(3, startTimeMs_);
       }
-      if (cpus_ != 0) {
+      if (maxCpuMillicores_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, cpus_);
+          .computeUInt32Size(4, maxCpuMillicores_);
       }
-      if (memoryBytes_ != 0L) {
+      if (maxMemoryBytes_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(5, memoryBytes_);
+          .computeUInt64Size(5, maxMemoryBytes_);
+      }
+      if (usedCpuMillicores_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(7, usedCpuMillicores_);
+      }
+      if (usedMemoryBytes_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(8, usedMemoryBytes_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(hostname_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, hostname_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6486,10 +6639,16 @@ com.google.protobuf.ByteString defaultValue);
           .equals(other.getGitCommit())) return false;
       if (getStartTimeMs()
           != other.getStartTimeMs()) return false;
-      if (getCpus()
-          != other.getCpus()) return false;
-      if (getMemoryBytes()
-          != other.getMemoryBytes()) return false;
+      if (getMaxCpuMillicores()
+          != other.getMaxCpuMillicores()) return false;
+      if (getMaxMemoryBytes()
+          != other.getMaxMemoryBytes()) return false;
+      if (getUsedCpuMillicores()
+          != other.getUsedCpuMillicores()) return false;
+      if (getUsedMemoryBytes()
+          != other.getUsedMemoryBytes()) return false;
+      if (!getHostname()
+          .equals(other.getHostname())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6508,11 +6667,18 @@ com.google.protobuf.ByteString defaultValue);
       hash = (37 * hash) + START_TIME_MS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getStartTimeMs());
-      hash = (37 * hash) + CPUS_FIELD_NUMBER;
-      hash = (53 * hash) + getCpus();
-      hash = (37 * hash) + MEMORY_BYTES_FIELD_NUMBER;
+      hash = (37 * hash) + MAX_CPU_MILLICORES_FIELD_NUMBER;
+      hash = (53 * hash) + getMaxCpuMillicores();
+      hash = (37 * hash) + MAX_MEMORY_BYTES_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getMemoryBytes());
+          getMaxMemoryBytes());
+      hash = (37 * hash) + USED_CPU_MILLICORES_FIELD_NUMBER;
+      hash = (53 * hash) + getUsedCpuMillicores();
+      hash = (37 * hash) + USED_MEMORY_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUsedMemoryBytes());
+      hash = (37 * hash) + HOSTNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getHostname().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6652,9 +6818,15 @@ com.google.protobuf.ByteString defaultValue);
 
         startTimeMs_ = 0L;
 
-        cpus_ = 0;
+        maxCpuMillicores_ = 0;
 
-        memoryBytes_ = 0L;
+        maxMemoryBytes_ = 0L;
+
+        usedCpuMillicores_ = 0;
+
+        usedMemoryBytes_ = 0L;
+
+        hostname_ = "";
 
         return this;
       }
@@ -6685,8 +6857,11 @@ com.google.protobuf.ByteString defaultValue);
         result.version_ = version_;
         result.gitCommit_ = gitCommit_;
         result.startTimeMs_ = startTimeMs_;
-        result.cpus_ = cpus_;
-        result.memoryBytes_ = memoryBytes_;
+        result.maxCpuMillicores_ = maxCpuMillicores_;
+        result.maxMemoryBytes_ = maxMemoryBytes_;
+        result.usedCpuMillicores_ = usedCpuMillicores_;
+        result.usedMemoryBytes_ = usedMemoryBytes_;
+        result.hostname_ = hostname_;
         onBuilt();
         return result;
       }
@@ -6746,11 +6921,21 @@ com.google.protobuf.ByteString defaultValue);
         if (other.getStartTimeMs() != 0L) {
           setStartTimeMs(other.getStartTimeMs());
         }
-        if (other.getCpus() != 0) {
-          setCpus(other.getCpus());
+        if (other.getMaxCpuMillicores() != 0) {
+          setMaxCpuMillicores(other.getMaxCpuMillicores());
         }
-        if (other.getMemoryBytes() != 0L) {
-          setMemoryBytes(other.getMemoryBytes());
+        if (other.getMaxMemoryBytes() != 0L) {
+          setMaxMemoryBytes(other.getMaxMemoryBytes());
+        }
+        if (other.getUsedCpuMillicores() != 0) {
+          setUsedCpuMillicores(other.getUsedCpuMillicores());
+        }
+        if (other.getUsedMemoryBytes() != 0L) {
+          setUsedMemoryBytes(other.getUsedMemoryBytes());
+        }
+        if (!other.getHostname().isEmpty()) {
+          hostname_ = other.hostname_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7016,88 +7201,270 @@ com.google.protobuf.ByteString defaultValue);
         return this;
       }
 
-      private int cpus_ ;
+      private int maxCpuMillicores_ ;
       /**
        * <pre>
-       * The CPU cores number of the node.
+       * The maximum CPU millicores of the node.
        * </pre>
        *
-       * <code>uint32 cpus = 4;</code>
-       * @return The cpus.
+       * <code>uint32 max_cpu_millicores = 4;</code>
+       * @return The maxCpuMillicores.
        */
       @java.lang.Override
-      public int getCpus() {
-        return cpus_;
+      public int getMaxCpuMillicores() {
+        return maxCpuMillicores_;
       }
       /**
        * <pre>
-       * The CPU cores number of the node.
+       * The maximum CPU millicores of the node.
        * </pre>
        *
-       * <code>uint32 cpus = 4;</code>
-       * @param value The cpus to set.
+       * <code>uint32 max_cpu_millicores = 4;</code>
+       * @param value The maxCpuMillicores to set.
        * @return This builder for chaining.
        */
-      public Builder setCpus(int value) {
+      public Builder setMaxCpuMillicores(int value) {
         
-        cpus_ = value;
+        maxCpuMillicores_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * The CPU cores number of the node.
+       * The maximum CPU millicores of the node.
        * </pre>
        *
-       * <code>uint32 cpus = 4;</code>
+       * <code>uint32 max_cpu_millicores = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearCpus() {
+      public Builder clearMaxCpuMillicores() {
         
-        cpus_ = 0;
+        maxCpuMillicores_ = 0;
         onChanged();
         return this;
       }
 
-      private long memoryBytes_ ;
+      private long maxMemoryBytes_ ;
       /**
        * <pre>
-       * The memory bytes of the node.
+       * The maximum memory bytes of the node.
        * </pre>
        *
-       * <code>uint64 memory_bytes = 5;</code>
-       * @return The memoryBytes.
+       * <code>uint64 max_memory_bytes = 5;</code>
+       * @return The maxMemoryBytes.
        */
       @java.lang.Override
-      public long getMemoryBytes() {
-        return memoryBytes_;
+      public long getMaxMemoryBytes() {
+        return maxMemoryBytes_;
       }
       /**
        * <pre>
-       * The memory bytes of the node.
+       * The maximum memory bytes of the node.
        * </pre>
        *
-       * <code>uint64 memory_bytes = 5;</code>
-       * @param value The memoryBytes to set.
+       * <code>uint64 max_memory_bytes = 5;</code>
+       * @param value The maxMemoryBytes to set.
        * @return This builder for chaining.
        */
-      public Builder setMemoryBytes(long value) {
+      public Builder setMaxMemoryBytes(long value) {
         
-        memoryBytes_ = value;
+        maxMemoryBytes_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * The memory bytes of the node.
+       * The maximum memory bytes of the node.
        * </pre>
        *
-       * <code>uint64 memory_bytes = 5;</code>
+       * <code>uint64 max_memory_bytes = 5;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMemoryBytes() {
+      public Builder clearMaxMemoryBytes() {
         
-        memoryBytes_ = 0L;
+        maxMemoryBytes_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int usedCpuMillicores_ ;
+      /**
+       * <pre>
+       * The used CPU millicores of the node.
+       * </pre>
+       *
+       * <code>uint32 used_cpu_millicores = 7;</code>
+       * @return The usedCpuMillicores.
+       */
+      @java.lang.Override
+      public int getUsedCpuMillicores() {
+        return usedCpuMillicores_;
+      }
+      /**
+       * <pre>
+       * The used CPU millicores of the node.
+       * </pre>
+       *
+       * <code>uint32 used_cpu_millicores = 7;</code>
+       * @param value The usedCpuMillicores to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsedCpuMillicores(int value) {
+        
+        usedCpuMillicores_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The used CPU millicores of the node.
+       * </pre>
+       *
+       * <code>uint32 used_cpu_millicores = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsedCpuMillicores() {
+        
+        usedCpuMillicores_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long usedMemoryBytes_ ;
+      /**
+       * <pre>
+       * The used memory bytes of the node.
+       * </pre>
+       *
+       * <code>uint64 used_memory_bytes = 8;</code>
+       * @return The usedMemoryBytes.
+       */
+      @java.lang.Override
+      public long getUsedMemoryBytes() {
+        return usedMemoryBytes_;
+      }
+      /**
+       * <pre>
+       * The used memory bytes of the node.
+       * </pre>
+       *
+       * <code>uint64 used_memory_bytes = 8;</code>
+       * @param value The usedMemoryBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsedMemoryBytes(long value) {
+        
+        usedMemoryBytes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The used memory bytes of the node.
+       * </pre>
+       *
+       * <code>uint64 used_memory_bytes = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsedMemoryBytes() {
+        
+        usedMemoryBytes_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object hostname_ = "";
+      /**
+       * <pre>
+       * The hostname of the node.
+       * </pre>
+       *
+       * <code>string hostname = 9;</code>
+       * @return The hostname.
+       */
+      public java.lang.String getHostname() {
+        java.lang.Object ref = hostname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          hostname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The hostname of the node.
+       * </pre>
+       *
+       * <code>string hostname = 9;</code>
+       * @return The bytes for hostname.
+       */
+      public com.google.protobuf.ByteString
+          getHostnameBytes() {
+        java.lang.Object ref = hostname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          hostname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The hostname of the node.
+       * </pre>
+       *
+       * <code>string hostname = 9;</code>
+       * @param value The hostname to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHostname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        hostname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The hostname of the node.
+       * </pre>
+       *
+       * <code>string hostname = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHostname() {
+        
+        hostname_ = getDefaultInstance().getHostname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The hostname of the node.
+       * </pre>
+       *
+       * <code>string hostname = 9;</code>
+       * @param value The bytes for hostname to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHostnameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        hostname_ = value;
         onChanged();
         return this;
       }
@@ -16609,55 +16976,57 @@ com.google.protobuf.ByteString defaultValue);
       "8\001B\020\n\016node_workloads\"\"\n\021DatanodeWorkload" +
       "s\022\r\n\005types\030\001 \003(\005\"\"\n\021FrontendWorkloads\022\r\n" +
       "\005types\030\001 \003(\005\"\"\n\021FlownodeWorkloads\022\r\n\005typ" +
-      "es\030\001 \003(\005\"j\n\010NodeInfo\022\017\n\007version\030\001 \001(\t\022\022\n" +
-      "\ngit_commit\030\002 \001(\t\022\025\n\rstart_time_ms\030\003 \001(\004" +
-      "\022\014\n\004cpus\030\004 \001(\r\022\024\n\014memory_bytes\030\005 \001(\004\"\207\002\n" +
-      "\nRegionStat\022\021\n\tregion_id\030\001 \001(\004\022\014\n\004rcus\030\002" +
-      " \001(\003\022\014\n\004wcus\030\003 \001(\003\022\031\n\021approximate_bytes\030" +
-      "\004 \001(\003\022\016\n\006engine\030\006 \001(\t\022*\n\004role\030\007 \001(\0162\034.gr" +
-      "eptime.v1.meta.RegionRole\022@\n\nextensions\030" +
-      "c \003(\0132,.greptime.v1.meta.RegionStat.Exte" +
-      "nsionsEntry\0321\n\017ExtensionsEntry\022\013\n\003key\030\001 " +
-      "\001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"a\n\tTopicStat\022\022\n\nt" +
-      "opic_name\030\001 \001(\t\022\023\n\013record_size\030\002 \001(\004\022\022\n\n" +
-      "record_num\030\003 \001(\004\022\027\n\017latest_entry_id\030\004 \001(" +
-      "\004\"\227\002\n\010FlowStat\022D\n\016flow_stat_size\030\001 \003(\0132," +
-      ".greptime.v1.meta.FlowStat.FlowStatSizeE" +
-      "ntry\022T\n\027flow_last_exec_time_map\030\002 \003(\01323." +
-      "greptime.v1.meta.FlowStat.FlowLastExecTi" +
-      "meMapEntry\0323\n\021FlowStatSizeEntry\022\013\n\003key\030\001" +
-      " \001(\r\022\r\n\005value\030\002 \001(\004:\0028\001\032:\n\030FlowLastExecT" +
-      "imeMapEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\003:" +
-      "\0028\001\"\265\001\n\021HeartbeatResponse\0220\n\006header\030\001 \001(" +
-      "\0132 .greptime.v1.meta.ResponseHeader\0229\n\017m" +
-      "ailbox_message\030\002 \001(\0132 .greptime.v1.meta." +
-      "MailboxMessage\0223\n\014region_lease\030\003 \001(\0132\035.g" +
-      "reptime.v1.meta.RegionLease\"\306\001\n\rGrantedR" +
-      "egion\022\021\n\tregion_id\030\001 \001(\004\022*\n\004role\030\002 \001(\0162\034" +
-      ".greptime.v1.meta.RegionRole\022C\n\nextensio" +
-      "ns\030c \003(\0132/.greptime.v1.meta.GrantedRegio" +
-      "n.ExtensionsEntry\0321\n\017ExtensionsEntry\022\013\n\003" +
-      "key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"\222\001\n\013RegionL" +
-      "ease\0220\n\007regions\030\001 \003(\0132\037.greptime.v1.meta" +
-      ".GrantedRegion\022\034\n\024duration_since_epoch\030\002" +
-      " \001(\004\022\025\n\rlease_seconds\030\003 \001(\004\022\034\n\024closeable" +
-      "_region_ids\030\004 \003(\004\"C\n\020AskLeaderRequest\022/\n" +
-      "\006header\030\001 \001(\0132\037.greptime.v1.meta.Request" +
-      "Header\"m\n\021AskLeaderResponse\0220\n\006header\030\001 " +
-      "\001(\0132 .greptime.v1.meta.ResponseHeader\022&\n" +
-      "\006leader\030\002 \001(\0132\026.greptime.v1.meta.Peer\"|\n" +
-      "\016MailboxMessage\022\n\n\002id\030\001 \001(\004\022\017\n\007subject\030\002" +
-      " \001(\t\022\014\n\004from\030\003 \001(\t\022\n\n\002to\030\004 \001(\t\022\030\n\020timest" +
-      "amp_millis\030\005 \001(\003\022\016\n\004json\030\006 \001(\tH\000B\t\n\007payl" +
-      "oad*=\n\nRegionRole\022\n\n\006Leader\020\000\022\014\n\010Followe" +
-      "r\020\001\022\025\n\021DowngradingLeader\020\0022\277\001\n\tHeartbeat" +
-      "\022Z\n\tHeartbeat\022\".greptime.v1.meta.Heartbe" +
-      "atRequest\032#.greptime.v1.meta.HeartbeatRe" +
-      "sponse\"\000(\0010\001\022V\n\tAskLeader\022\".greptime.v1." +
-      "meta.AskLeaderRequest\032#.greptime.v1.meta" +
-      ".AskLeaderResponse\"\000B<Z:github.com/Grept" +
-      "imeTeam/greptime-proto/go/greptime/v1/me" +
-      "tab\006proto3"
+      "es\030\001 \003(\005\"\306\001\n\010NodeInfo\022\017\n\007version\030\001 \001(\t\022\022" +
+      "\n\ngit_commit\030\002 \001(\t\022\025\n\rstart_time_ms\030\003 \001(" +
+      "\004\022\032\n\022max_cpu_millicores\030\004 \001(\r\022\030\n\020max_mem" +
+      "ory_bytes\030\005 \001(\004\022\033\n\023used_cpu_millicores\030\007" +
+      " \001(\r\022\031\n\021used_memory_bytes\030\010 \001(\004\022\020\n\010hostn" +
+      "ame\030\t \001(\t\"\207\002\n\nRegionStat\022\021\n\tregion_id\030\001 " +
+      "\001(\004\022\014\n\004rcus\030\002 \001(\003\022\014\n\004wcus\030\003 \001(\003\022\031\n\021appro" +
+      "ximate_bytes\030\004 \001(\003\022\016\n\006engine\030\006 \001(\t\022*\n\004ro" +
+      "le\030\007 \001(\0162\034.greptime.v1.meta.RegionRole\022@" +
+      "\n\nextensions\030c \003(\0132,.greptime.v1.meta.Re" +
+      "gionStat.ExtensionsEntry\0321\n\017ExtensionsEn" +
+      "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"a\n\tT" +
+      "opicStat\022\022\n\ntopic_name\030\001 \001(\t\022\023\n\013record_s" +
+      "ize\030\002 \001(\004\022\022\n\nrecord_num\030\003 \001(\004\022\027\n\017latest_" +
+      "entry_id\030\004 \001(\004\"\227\002\n\010FlowStat\022D\n\016flow_stat" +
+      "_size\030\001 \003(\0132,.greptime.v1.meta.FlowStat." +
+      "FlowStatSizeEntry\022T\n\027flow_last_exec_time" +
+      "_map\030\002 \003(\01323.greptime.v1.meta.FlowStat.F" +
+      "lowLastExecTimeMapEntry\0323\n\021FlowStatSizeE" +
+      "ntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\004:\0028\001\032:\n\030" +
+      "FlowLastExecTimeMapEntry\022\013\n\003key\030\001 \001(\r\022\r\n" +
+      "\005value\030\002 \001(\003:\0028\001\"\265\001\n\021HeartbeatResponse\0220" +
+      "\n\006header\030\001 \001(\0132 .greptime.v1.meta.Respon" +
+      "seHeader\0229\n\017mailbox_message\030\002 \001(\0132 .grep" +
+      "time.v1.meta.MailboxMessage\0223\n\014region_le" +
+      "ase\030\003 \001(\0132\035.greptime.v1.meta.RegionLease" +
+      "\"\306\001\n\rGrantedRegion\022\021\n\tregion_id\030\001 \001(\004\022*\n" +
+      "\004role\030\002 \001(\0162\034.greptime.v1.meta.RegionRol" +
+      "e\022C\n\nextensions\030c \003(\0132/.greptime.v1.meta" +
+      ".GrantedRegion.ExtensionsEntry\0321\n\017Extens" +
+      "ionsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028" +
+      "\001\"\222\001\n\013RegionLease\0220\n\007regions\030\001 \003(\0132\037.gre" +
+      "ptime.v1.meta.GrantedRegion\022\034\n\024duration_" +
+      "since_epoch\030\002 \001(\004\022\025\n\rlease_seconds\030\003 \001(\004" +
+      "\022\034\n\024closeable_region_ids\030\004 \003(\004\"C\n\020AskLea" +
+      "derRequest\022/\n\006header\030\001 \001(\0132\037.greptime.v1" +
+      ".meta.RequestHeader\"m\n\021AskLeaderResponse" +
+      "\0220\n\006header\030\001 \001(\0132 .greptime.v1.meta.Resp" +
+      "onseHeader\022&\n\006leader\030\002 \001(\0132\026.greptime.v1" +
+      ".meta.Peer\"|\n\016MailboxMessage\022\n\n\002id\030\001 \001(\004" +
+      "\022\017\n\007subject\030\002 \001(\t\022\014\n\004from\030\003 \001(\t\022\n\n\002to\030\004 " +
+      "\001(\t\022\030\n\020timestamp_millis\030\005 \001(\003\022\016\n\004json\030\006 " +
+      "\001(\tH\000B\t\n\007payload*=\n\nRegionRole\022\n\n\006Leader" +
+      "\020\000\022\014\n\010Follower\020\001\022\025\n\021DowngradingLeader\020\0022" +
+      "\277\001\n\tHeartbeat\022Z\n\tHeartbeat\022\".greptime.v1" +
+      ".meta.HeartbeatRequest\032#.greptime.v1.met" +
+      "a.HeartbeatResponse\"\000(\0010\001\022V\n\tAskLeader\022\"" +
+      ".greptime.v1.meta.AskLeaderRequest\032#.gre" +
+      "ptime.v1.meta.AskLeaderResponse\"\000B<Z:git" +
+      "hub.com/GreptimeTeam/greptime-proto/go/g" +
+      "reptime/v1/metab\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -16699,7 +17068,7 @@ com.google.protobuf.ByteString defaultValue);
     internal_static_greptime_v1_meta_NodeInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_greptime_v1_meta_NodeInfo_descriptor,
-        new java.lang.String[] { "Version", "GitCommit", "StartTimeMs", "Cpus", "MemoryBytes", });
+        new java.lang.String[] { "Version", "GitCommit", "StartTimeMs", "MaxCpuMillicores", "MaxMemoryBytes", "UsedCpuMillicores", "UsedMemoryBytes", "Hostname", });
     internal_static_greptime_v1_meta_RegionStat_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_greptime_v1_meta_RegionStat_fieldAccessorTable = new

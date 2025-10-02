@@ -94,10 +94,16 @@ message NodeInfo {
   string git_commit = 2;
   // The node start timestamp
   uint64 start_time_ms = 3;
-  // The CPU cores number of the node.
-  uint32 cpus = 4;
-  // The memory bytes of the node.
-  uint64 memory_bytes = 5;
+  // The maximum CPU millicores of the node.
+  uint32 max_cpu_millicores = 4;
+  // The maximum memory bytes of the node.
+  uint64 max_memory_bytes = 5;
+  // The used CPU millicores of the node.
+  uint32 used_cpu_millicores = 7;
+  // The used memory bytes of the node.
+  uint64 used_memory_bytes = 8;
+  // The hostname of the node.
+  string hostname = 9;
 }
 
 message RegionStat {
