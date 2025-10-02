@@ -6146,23 +6146,23 @@ com.google.protobuf.ByteString defaultValue);
 
     /**
      * <pre>
-     * The maximum CPU millicores of the node.
+     * The total CPU millicores of the node.
      * </pre>
      *
-     * <code>int64 max_cpu_millicores = 4;</code>
-     * @return The maxCpuMillicores.
+     * <code>int64 total_cpu_millicores = 4;</code>
+     * @return The totalCpuMillicores.
      */
-    long getMaxCpuMillicores();
+    long getTotalCpuMillicores();
 
     /**
      * <pre>
-     * The maximum memory bytes of the node.
+     * The total memory bytes of the node.
      * </pre>
      *
-     * <code>int64 max_memory_bytes = 5;</code>
-     * @return The maxMemoryBytes.
+     * <code>int64 total_memory_bytes = 5;</code>
+     * @return The totalMemoryBytes.
      */
-    long getMaxMemoryBytes();
+    long getTotalMemoryBytes();
 
     /**
      * <pre>
@@ -6271,12 +6271,12 @@ com.google.protobuf.ByteString defaultValue);
             }
             case 32: {
 
-              maxCpuMillicores_ = input.readInt64();
+              totalCpuMillicores_ = input.readInt64();
               break;
             }
             case 40: {
 
-              maxMemoryBytes_ = input.readInt64();
+              totalMemoryBytes_ = input.readInt64();
               break;
             }
             case 56: {
@@ -6436,34 +6436,34 @@ com.google.protobuf.ByteString defaultValue);
       return startTimeMs_;
     }
 
-    public static final int MAX_CPU_MILLICORES_FIELD_NUMBER = 4;
-    private long maxCpuMillicores_;
+    public static final int TOTAL_CPU_MILLICORES_FIELD_NUMBER = 4;
+    private long totalCpuMillicores_;
     /**
      * <pre>
-     * The maximum CPU millicores of the node.
+     * The total CPU millicores of the node.
      * </pre>
      *
-     * <code>int64 max_cpu_millicores = 4;</code>
-     * @return The maxCpuMillicores.
+     * <code>int64 total_cpu_millicores = 4;</code>
+     * @return The totalCpuMillicores.
      */
     @java.lang.Override
-    public long getMaxCpuMillicores() {
-      return maxCpuMillicores_;
+    public long getTotalCpuMillicores() {
+      return totalCpuMillicores_;
     }
 
-    public static final int MAX_MEMORY_BYTES_FIELD_NUMBER = 5;
-    private long maxMemoryBytes_;
+    public static final int TOTAL_MEMORY_BYTES_FIELD_NUMBER = 5;
+    private long totalMemoryBytes_;
     /**
      * <pre>
-     * The maximum memory bytes of the node.
+     * The total memory bytes of the node.
      * </pre>
      *
-     * <code>int64 max_memory_bytes = 5;</code>
-     * @return The maxMemoryBytes.
+     * <code>int64 total_memory_bytes = 5;</code>
+     * @return The totalMemoryBytes.
      */
     @java.lang.Override
-    public long getMaxMemoryBytes() {
-      return maxMemoryBytes_;
+    public long getTotalMemoryBytes() {
+      return totalMemoryBytes_;
     }
 
     public static final int USED_CPU_MILLICORES_FIELD_NUMBER = 7;
@@ -6565,11 +6565,11 @@ com.google.protobuf.ByteString defaultValue);
       if (startTimeMs_ != 0L) {
         output.writeUInt64(3, startTimeMs_);
       }
-      if (maxCpuMillicores_ != 0L) {
-        output.writeInt64(4, maxCpuMillicores_);
+      if (totalCpuMillicores_ != 0L) {
+        output.writeInt64(4, totalCpuMillicores_);
       }
-      if (maxMemoryBytes_ != 0L) {
-        output.writeInt64(5, maxMemoryBytes_);
+      if (totalMemoryBytes_ != 0L) {
+        output.writeInt64(5, totalMemoryBytes_);
       }
       if (usedCpuMillicores_ != 0L) {
         output.writeInt64(7, usedCpuMillicores_);
@@ -6599,13 +6599,13 @@ com.google.protobuf.ByteString defaultValue);
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(3, startTimeMs_);
       }
-      if (maxCpuMillicores_ != 0L) {
+      if (totalCpuMillicores_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(4, maxCpuMillicores_);
+          .computeInt64Size(4, totalCpuMillicores_);
       }
-      if (maxMemoryBytes_ != 0L) {
+      if (totalMemoryBytes_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(5, maxMemoryBytes_);
+          .computeInt64Size(5, totalMemoryBytes_);
       }
       if (usedCpuMillicores_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -6639,10 +6639,10 @@ com.google.protobuf.ByteString defaultValue);
           .equals(other.getGitCommit())) return false;
       if (getStartTimeMs()
           != other.getStartTimeMs()) return false;
-      if (getMaxCpuMillicores()
-          != other.getMaxCpuMillicores()) return false;
-      if (getMaxMemoryBytes()
-          != other.getMaxMemoryBytes()) return false;
+      if (getTotalCpuMillicores()
+          != other.getTotalCpuMillicores()) return false;
+      if (getTotalMemoryBytes()
+          != other.getTotalMemoryBytes()) return false;
       if (getUsedCpuMillicores()
           != other.getUsedCpuMillicores()) return false;
       if (getUsedMemoryBytes()
@@ -6667,12 +6667,12 @@ com.google.protobuf.ByteString defaultValue);
       hash = (37 * hash) + START_TIME_MS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getStartTimeMs());
-      hash = (37 * hash) + MAX_CPU_MILLICORES_FIELD_NUMBER;
+      hash = (37 * hash) + TOTAL_CPU_MILLICORES_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getMaxCpuMillicores());
-      hash = (37 * hash) + MAX_MEMORY_BYTES_FIELD_NUMBER;
+          getTotalCpuMillicores());
+      hash = (37 * hash) + TOTAL_MEMORY_BYTES_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getMaxMemoryBytes());
+          getTotalMemoryBytes());
       hash = (37 * hash) + USED_CPU_MILLICORES_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getUsedCpuMillicores());
@@ -6820,9 +6820,9 @@ com.google.protobuf.ByteString defaultValue);
 
         startTimeMs_ = 0L;
 
-        maxCpuMillicores_ = 0L;
+        totalCpuMillicores_ = 0L;
 
-        maxMemoryBytes_ = 0L;
+        totalMemoryBytes_ = 0L;
 
         usedCpuMillicores_ = 0L;
 
@@ -6859,8 +6859,8 @@ com.google.protobuf.ByteString defaultValue);
         result.version_ = version_;
         result.gitCommit_ = gitCommit_;
         result.startTimeMs_ = startTimeMs_;
-        result.maxCpuMillicores_ = maxCpuMillicores_;
-        result.maxMemoryBytes_ = maxMemoryBytes_;
+        result.totalCpuMillicores_ = totalCpuMillicores_;
+        result.totalMemoryBytes_ = totalMemoryBytes_;
         result.usedCpuMillicores_ = usedCpuMillicores_;
         result.usedMemoryBytes_ = usedMemoryBytes_;
         result.hostname_ = hostname_;
@@ -6923,11 +6923,11 @@ com.google.protobuf.ByteString defaultValue);
         if (other.getStartTimeMs() != 0L) {
           setStartTimeMs(other.getStartTimeMs());
         }
-        if (other.getMaxCpuMillicores() != 0L) {
-          setMaxCpuMillicores(other.getMaxCpuMillicores());
+        if (other.getTotalCpuMillicores() != 0L) {
+          setTotalCpuMillicores(other.getTotalCpuMillicores());
         }
-        if (other.getMaxMemoryBytes() != 0L) {
-          setMaxMemoryBytes(other.getMaxMemoryBytes());
+        if (other.getTotalMemoryBytes() != 0L) {
+          setTotalMemoryBytes(other.getTotalMemoryBytes());
         }
         if (other.getUsedCpuMillicores() != 0L) {
           setUsedCpuMillicores(other.getUsedCpuMillicores());
@@ -7203,88 +7203,88 @@ com.google.protobuf.ByteString defaultValue);
         return this;
       }
 
-      private long maxCpuMillicores_ ;
+      private long totalCpuMillicores_ ;
       /**
        * <pre>
-       * The maximum CPU millicores of the node.
+       * The total CPU millicores of the node.
        * </pre>
        *
-       * <code>int64 max_cpu_millicores = 4;</code>
-       * @return The maxCpuMillicores.
+       * <code>int64 total_cpu_millicores = 4;</code>
+       * @return The totalCpuMillicores.
        */
       @java.lang.Override
-      public long getMaxCpuMillicores() {
-        return maxCpuMillicores_;
+      public long getTotalCpuMillicores() {
+        return totalCpuMillicores_;
       }
       /**
        * <pre>
-       * The maximum CPU millicores of the node.
+       * The total CPU millicores of the node.
        * </pre>
        *
-       * <code>int64 max_cpu_millicores = 4;</code>
-       * @param value The maxCpuMillicores to set.
+       * <code>int64 total_cpu_millicores = 4;</code>
+       * @param value The totalCpuMillicores to set.
        * @return This builder for chaining.
        */
-      public Builder setMaxCpuMillicores(long value) {
+      public Builder setTotalCpuMillicores(long value) {
         
-        maxCpuMillicores_ = value;
+        totalCpuMillicores_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * The maximum CPU millicores of the node.
+       * The total CPU millicores of the node.
        * </pre>
        *
-       * <code>int64 max_cpu_millicores = 4;</code>
+       * <code>int64 total_cpu_millicores = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMaxCpuMillicores() {
+      public Builder clearTotalCpuMillicores() {
         
-        maxCpuMillicores_ = 0L;
+        totalCpuMillicores_ = 0L;
         onChanged();
         return this;
       }
 
-      private long maxMemoryBytes_ ;
+      private long totalMemoryBytes_ ;
       /**
        * <pre>
-       * The maximum memory bytes of the node.
+       * The total memory bytes of the node.
        * </pre>
        *
-       * <code>int64 max_memory_bytes = 5;</code>
-       * @return The maxMemoryBytes.
+       * <code>int64 total_memory_bytes = 5;</code>
+       * @return The totalMemoryBytes.
        */
       @java.lang.Override
-      public long getMaxMemoryBytes() {
-        return maxMemoryBytes_;
+      public long getTotalMemoryBytes() {
+        return totalMemoryBytes_;
       }
       /**
        * <pre>
-       * The maximum memory bytes of the node.
+       * The total memory bytes of the node.
        * </pre>
        *
-       * <code>int64 max_memory_bytes = 5;</code>
-       * @param value The maxMemoryBytes to set.
+       * <code>int64 total_memory_bytes = 5;</code>
+       * @param value The totalMemoryBytes to set.
        * @return This builder for chaining.
        */
-      public Builder setMaxMemoryBytes(long value) {
+      public Builder setTotalMemoryBytes(long value) {
         
-        maxMemoryBytes_ = value;
+        totalMemoryBytes_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * The maximum memory bytes of the node.
+       * The total memory bytes of the node.
        * </pre>
        *
-       * <code>int64 max_memory_bytes = 5;</code>
+       * <code>int64 total_memory_bytes = 5;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMaxMemoryBytes() {
+      public Builder clearTotalMemoryBytes() {
         
-        maxMemoryBytes_ = 0L;
+        totalMemoryBytes_ = 0L;
         onChanged();
         return this;
       }
@@ -16978,57 +16978,57 @@ com.google.protobuf.ByteString defaultValue);
       "8\001B\020\n\016node_workloads\"\"\n\021DatanodeWorkload" +
       "s\022\r\n\005types\030\001 \003(\005\"\"\n\021FrontendWorkloads\022\r\n" +
       "\005types\030\001 \003(\005\"\"\n\021FlownodeWorkloads\022\r\n\005typ" +
-      "es\030\001 \003(\005\"\306\001\n\010NodeInfo\022\017\n\007version\030\001 \001(\t\022\022" +
+      "es\030\001 \003(\005\"\312\001\n\010NodeInfo\022\017\n\007version\030\001 \001(\t\022\022" +
       "\n\ngit_commit\030\002 \001(\t\022\025\n\rstart_time_ms\030\003 \001(" +
-      "\004\022\032\n\022max_cpu_millicores\030\004 \001(\003\022\030\n\020max_mem" +
-      "ory_bytes\030\005 \001(\003\022\033\n\023used_cpu_millicores\030\007" +
-      " \001(\003\022\031\n\021used_memory_bytes\030\010 \001(\003\022\020\n\010hostn" +
-      "ame\030\t \001(\t\"\207\002\n\nRegionStat\022\021\n\tregion_id\030\001 " +
-      "\001(\004\022\014\n\004rcus\030\002 \001(\003\022\014\n\004wcus\030\003 \001(\003\022\031\n\021appro" +
-      "ximate_bytes\030\004 \001(\003\022\016\n\006engine\030\006 \001(\t\022*\n\004ro" +
-      "le\030\007 \001(\0162\034.greptime.v1.meta.RegionRole\022@" +
-      "\n\nextensions\030c \003(\0132,.greptime.v1.meta.Re" +
-      "gionStat.ExtensionsEntry\0321\n\017ExtensionsEn" +
-      "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"a\n\tT" +
-      "opicStat\022\022\n\ntopic_name\030\001 \001(\t\022\023\n\013record_s" +
-      "ize\030\002 \001(\004\022\022\n\nrecord_num\030\003 \001(\004\022\027\n\017latest_" +
-      "entry_id\030\004 \001(\004\"\227\002\n\010FlowStat\022D\n\016flow_stat" +
-      "_size\030\001 \003(\0132,.greptime.v1.meta.FlowStat." +
-      "FlowStatSizeEntry\022T\n\027flow_last_exec_time" +
-      "_map\030\002 \003(\01323.greptime.v1.meta.FlowStat.F" +
-      "lowLastExecTimeMapEntry\0323\n\021FlowStatSizeE" +
-      "ntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\004:\0028\001\032:\n\030" +
-      "FlowLastExecTimeMapEntry\022\013\n\003key\030\001 \001(\r\022\r\n" +
-      "\005value\030\002 \001(\003:\0028\001\"\265\001\n\021HeartbeatResponse\0220" +
-      "\n\006header\030\001 \001(\0132 .greptime.v1.meta.Respon" +
-      "seHeader\0229\n\017mailbox_message\030\002 \001(\0132 .grep" +
-      "time.v1.meta.MailboxMessage\0223\n\014region_le" +
-      "ase\030\003 \001(\0132\035.greptime.v1.meta.RegionLease" +
-      "\"\306\001\n\rGrantedRegion\022\021\n\tregion_id\030\001 \001(\004\022*\n" +
-      "\004role\030\002 \001(\0162\034.greptime.v1.meta.RegionRol" +
-      "e\022C\n\nextensions\030c \003(\0132/.greptime.v1.meta" +
-      ".GrantedRegion.ExtensionsEntry\0321\n\017Extens" +
-      "ionsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028" +
-      "\001\"\222\001\n\013RegionLease\0220\n\007regions\030\001 \003(\0132\037.gre" +
-      "ptime.v1.meta.GrantedRegion\022\034\n\024duration_" +
-      "since_epoch\030\002 \001(\004\022\025\n\rlease_seconds\030\003 \001(\004" +
-      "\022\034\n\024closeable_region_ids\030\004 \003(\004\"C\n\020AskLea" +
-      "derRequest\022/\n\006header\030\001 \001(\0132\037.greptime.v1" +
-      ".meta.RequestHeader\"m\n\021AskLeaderResponse" +
-      "\0220\n\006header\030\001 \001(\0132 .greptime.v1.meta.Resp" +
-      "onseHeader\022&\n\006leader\030\002 \001(\0132\026.greptime.v1" +
-      ".meta.Peer\"|\n\016MailboxMessage\022\n\n\002id\030\001 \001(\004" +
-      "\022\017\n\007subject\030\002 \001(\t\022\014\n\004from\030\003 \001(\t\022\n\n\002to\030\004 " +
-      "\001(\t\022\030\n\020timestamp_millis\030\005 \001(\003\022\016\n\004json\030\006 " +
-      "\001(\tH\000B\t\n\007payload*=\n\nRegionRole\022\n\n\006Leader" +
-      "\020\000\022\014\n\010Follower\020\001\022\025\n\021DowngradingLeader\020\0022" +
-      "\277\001\n\tHeartbeat\022Z\n\tHeartbeat\022\".greptime.v1" +
-      ".meta.HeartbeatRequest\032#.greptime.v1.met" +
-      "a.HeartbeatResponse\"\000(\0010\001\022V\n\tAskLeader\022\"" +
-      ".greptime.v1.meta.AskLeaderRequest\032#.gre" +
-      "ptime.v1.meta.AskLeaderResponse\"\000B<Z:git" +
-      "hub.com/GreptimeTeam/greptime-proto/go/g" +
-      "reptime/v1/metab\006proto3"
+      "\004\022\034\n\024total_cpu_millicores\030\004 \001(\003\022\032\n\022total" +
+      "_memory_bytes\030\005 \001(\003\022\033\n\023used_cpu_millicor" +
+      "es\030\007 \001(\003\022\031\n\021used_memory_bytes\030\010 \001(\003\022\020\n\010h" +
+      "ostname\030\t \001(\t\"\207\002\n\nRegionStat\022\021\n\tregion_i" +
+      "d\030\001 \001(\004\022\014\n\004rcus\030\002 \001(\003\022\014\n\004wcus\030\003 \001(\003\022\031\n\021a" +
+      "pproximate_bytes\030\004 \001(\003\022\016\n\006engine\030\006 \001(\t\022*" +
+      "\n\004role\030\007 \001(\0162\034.greptime.v1.meta.RegionRo" +
+      "le\022@\n\nextensions\030c \003(\0132,.greptime.v1.met" +
+      "a.RegionStat.ExtensionsEntry\0321\n\017Extensio" +
+      "nsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"" +
+      "a\n\tTopicStat\022\022\n\ntopic_name\030\001 \001(\t\022\023\n\013reco" +
+      "rd_size\030\002 \001(\004\022\022\n\nrecord_num\030\003 \001(\004\022\027\n\017lat" +
+      "est_entry_id\030\004 \001(\004\"\227\002\n\010FlowStat\022D\n\016flow_" +
+      "stat_size\030\001 \003(\0132,.greptime.v1.meta.FlowS" +
+      "tat.FlowStatSizeEntry\022T\n\027flow_last_exec_" +
+      "time_map\030\002 \003(\01323.greptime.v1.meta.FlowSt" +
+      "at.FlowLastExecTimeMapEntry\0323\n\021FlowStatS" +
+      "izeEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\004:\0028\001" +
+      "\032:\n\030FlowLastExecTimeMapEntry\022\013\n\003key\030\001 \001(" +
+      "\r\022\r\n\005value\030\002 \001(\003:\0028\001\"\265\001\n\021HeartbeatRespon" +
+      "se\0220\n\006header\030\001 \001(\0132 .greptime.v1.meta.Re" +
+      "sponseHeader\0229\n\017mailbox_message\030\002 \001(\0132 ." +
+      "greptime.v1.meta.MailboxMessage\0223\n\014regio" +
+      "n_lease\030\003 \001(\0132\035.greptime.v1.meta.RegionL" +
+      "ease\"\306\001\n\rGrantedRegion\022\021\n\tregion_id\030\001 \001(" +
+      "\004\022*\n\004role\030\002 \001(\0162\034.greptime.v1.meta.Regio" +
+      "nRole\022C\n\nextensions\030c \003(\0132/.greptime.v1." +
+      "meta.GrantedRegion.ExtensionsEntry\0321\n\017Ex" +
+      "tensionsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
+      "\014:\0028\001\"\222\001\n\013RegionLease\0220\n\007regions\030\001 \003(\0132\037" +
+      ".greptime.v1.meta.GrantedRegion\022\034\n\024durat" +
+      "ion_since_epoch\030\002 \001(\004\022\025\n\rlease_seconds\030\003" +
+      " \001(\004\022\034\n\024closeable_region_ids\030\004 \003(\004\"C\n\020As" +
+      "kLeaderRequest\022/\n\006header\030\001 \001(\0132\037.greptim" +
+      "e.v1.meta.RequestHeader\"m\n\021AskLeaderResp" +
+      "onse\0220\n\006header\030\001 \001(\0132 .greptime.v1.meta." +
+      "ResponseHeader\022&\n\006leader\030\002 \001(\0132\026.greptim" +
+      "e.v1.meta.Peer\"|\n\016MailboxMessage\022\n\n\002id\030\001" +
+      " \001(\004\022\017\n\007subject\030\002 \001(\t\022\014\n\004from\030\003 \001(\t\022\n\n\002t" +
+      "o\030\004 \001(\t\022\030\n\020timestamp_millis\030\005 \001(\003\022\016\n\004jso" +
+      "n\030\006 \001(\tH\000B\t\n\007payload*=\n\nRegionRole\022\n\n\006Le" +
+      "ader\020\000\022\014\n\010Follower\020\001\022\025\n\021DowngradingLeade" +
+      "r\020\0022\277\001\n\tHeartbeat\022Z\n\tHeartbeat\022\".greptim" +
+      "e.v1.meta.HeartbeatRequest\032#.greptime.v1" +
+      ".meta.HeartbeatResponse\"\000(\0010\001\022V\n\tAskLead" +
+      "er\022\".greptime.v1.meta.AskLeaderRequest\032#" +
+      ".greptime.v1.meta.AskLeaderResponse\"\000B<Z" +
+      ":github.com/GreptimeTeam/greptime-proto/" +
+      "go/greptime/v1/metab\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -17070,7 +17070,7 @@ com.google.protobuf.ByteString defaultValue);
     internal_static_greptime_v1_meta_NodeInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_greptime_v1_meta_NodeInfo_descriptor,
-        new java.lang.String[] { "Version", "GitCommit", "StartTimeMs", "MaxCpuMillicores", "MaxMemoryBytes", "UsedCpuMillicores", "UsedMemoryBytes", "Hostname", });
+        new java.lang.String[] { "Version", "GitCommit", "StartTimeMs", "TotalCpuMillicores", "TotalMemoryBytes", "UsedCpuMillicores", "UsedMemoryBytes", "Hostname", });
     internal_static_greptime_v1_meta_RegionStat_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_greptime_v1_meta_RegionStat_fieldAccessorTable = new

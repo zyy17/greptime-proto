@@ -1228,8 +1228,8 @@ class NodeInfo final :
     kGitCommitFieldNumber = 2,
     kHostnameFieldNumber = 9,
     kStartTimeMsFieldNumber = 3,
-    kMaxCpuMillicoresFieldNumber = 4,
-    kMaxMemoryBytesFieldNumber = 5,
+    kTotalCpuMillicoresFieldNumber = 4,
+    kTotalMemoryBytesFieldNumber = 5,
     kUsedCpuMillicoresFieldNumber = 7,
     kUsedMemoryBytesFieldNumber = 8,
   };
@@ -1284,22 +1284,22 @@ class NodeInfo final :
   void _internal_set_start_time_ms(uint64_t value);
   public:
 
-  // int64 max_cpu_millicores = 4;
-  void clear_max_cpu_millicores();
-  int64_t max_cpu_millicores() const;
-  void set_max_cpu_millicores(int64_t value);
+  // int64 total_cpu_millicores = 4;
+  void clear_total_cpu_millicores();
+  int64_t total_cpu_millicores() const;
+  void set_total_cpu_millicores(int64_t value);
   private:
-  int64_t _internal_max_cpu_millicores() const;
-  void _internal_set_max_cpu_millicores(int64_t value);
+  int64_t _internal_total_cpu_millicores() const;
+  void _internal_set_total_cpu_millicores(int64_t value);
   public:
 
-  // int64 max_memory_bytes = 5;
-  void clear_max_memory_bytes();
-  int64_t max_memory_bytes() const;
-  void set_max_memory_bytes(int64_t value);
+  // int64 total_memory_bytes = 5;
+  void clear_total_memory_bytes();
+  int64_t total_memory_bytes() const;
+  void set_total_memory_bytes(int64_t value);
   private:
-  int64_t _internal_max_memory_bytes() const;
-  void _internal_set_max_memory_bytes(int64_t value);
+  int64_t _internal_total_memory_bytes() const;
+  void _internal_set_total_memory_bytes(int64_t value);
   public:
 
   // int64 used_cpu_millicores = 7;
@@ -1332,8 +1332,8 @@ class NodeInfo final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr git_commit_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr hostname_;
     uint64_t start_time_ms_;
-    int64_t max_cpu_millicores_;
-    int64_t max_memory_bytes_;
+    int64_t total_cpu_millicores_;
+    int64_t total_memory_bytes_;
     int64_t used_cpu_millicores_;
     int64_t used_memory_bytes_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -4406,44 +4406,44 @@ inline void NodeInfo::set_start_time_ms(uint64_t value) {
   // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.start_time_ms)
 }
 
-// int64 max_cpu_millicores = 4;
-inline void NodeInfo::clear_max_cpu_millicores() {
-  _impl_.max_cpu_millicores_ = int64_t{0};
+// int64 total_cpu_millicores = 4;
+inline void NodeInfo::clear_total_cpu_millicores() {
+  _impl_.total_cpu_millicores_ = int64_t{0};
 }
-inline int64_t NodeInfo::_internal_max_cpu_millicores() const {
-  return _impl_.max_cpu_millicores_;
+inline int64_t NodeInfo::_internal_total_cpu_millicores() const {
+  return _impl_.total_cpu_millicores_;
 }
-inline int64_t NodeInfo::max_cpu_millicores() const {
-  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.max_cpu_millicores)
-  return _internal_max_cpu_millicores();
+inline int64_t NodeInfo::total_cpu_millicores() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.total_cpu_millicores)
+  return _internal_total_cpu_millicores();
 }
-inline void NodeInfo::_internal_set_max_cpu_millicores(int64_t value) {
+inline void NodeInfo::_internal_set_total_cpu_millicores(int64_t value) {
   
-  _impl_.max_cpu_millicores_ = value;
+  _impl_.total_cpu_millicores_ = value;
 }
-inline void NodeInfo::set_max_cpu_millicores(int64_t value) {
-  _internal_set_max_cpu_millicores(value);
-  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.max_cpu_millicores)
+inline void NodeInfo::set_total_cpu_millicores(int64_t value) {
+  _internal_set_total_cpu_millicores(value);
+  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.total_cpu_millicores)
 }
 
-// int64 max_memory_bytes = 5;
-inline void NodeInfo::clear_max_memory_bytes() {
-  _impl_.max_memory_bytes_ = int64_t{0};
+// int64 total_memory_bytes = 5;
+inline void NodeInfo::clear_total_memory_bytes() {
+  _impl_.total_memory_bytes_ = int64_t{0};
 }
-inline int64_t NodeInfo::_internal_max_memory_bytes() const {
-  return _impl_.max_memory_bytes_;
+inline int64_t NodeInfo::_internal_total_memory_bytes() const {
+  return _impl_.total_memory_bytes_;
 }
-inline int64_t NodeInfo::max_memory_bytes() const {
-  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.max_memory_bytes)
-  return _internal_max_memory_bytes();
+inline int64_t NodeInfo::total_memory_bytes() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.meta.NodeInfo.total_memory_bytes)
+  return _internal_total_memory_bytes();
 }
-inline void NodeInfo::_internal_set_max_memory_bytes(int64_t value) {
+inline void NodeInfo::_internal_set_total_memory_bytes(int64_t value) {
   
-  _impl_.max_memory_bytes_ = value;
+  _impl_.total_memory_bytes_ = value;
 }
-inline void NodeInfo::set_max_memory_bytes(int64_t value) {
-  _internal_set_max_memory_bytes(value);
-  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.max_memory_bytes)
+inline void NodeInfo::set_total_memory_bytes(int64_t value) {
+  _internal_set_total_memory_bytes(value);
+  // @@protoc_insertion_point(field_set:greptime.v1.meta.NodeInfo.total_memory_bytes)
 }
 
 // int64 used_cpu_millicores = 7;
